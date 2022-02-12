@@ -1,17 +1,17 @@
 import { PdfRequester } from "../../PdfRequester/PdfRequester";
-import { ScrapeRequester } from "../../ScrapeRequester/ScrapeRequester";
-import { ScrapeResponse } from "../../ScrapeRequester/Scrape.boundary";
+import { ScrapeDataGateway } from "./ScrapedDataGateway/ScrapeDataGateway";
+import { ScrappedData } from "./ScrapedDataGateway/ScrappedData";
 import { PdfBuilderFactory } from "./PdfBuilder/PdfBuilderFactory";
 import { ImageDataGateway } from "./ImageDataGateway/ImageDataGateway";
 import { scan } from "rxjs";
 
 export class PdfGenerator implements PdfRequester {
-    private scraper: ScrapeRequester;
+    private scrappedDataGateway: ScrapeDataGateway;
     private pdfBuilderFactory: PdfBuilderFactory;
     private imageDataGateway: ImageDataGateway;
 
     async generatePdfFromWithPrice(link: string, price: number): Promise<string> {
-        const scrappedData: ScrapeResponse = await this.scraper.scrapeLink(link);
+        const scrappedData: ScrappedData = await this.scrappedDataGateway.scrapeLink(link);
         const pathToMainImage: string =
             await this.imageDataGateway.saveToFileAndGetPath(scrappedData.mainPictureUrl);
         const pathsToOtherImages: string[] =
