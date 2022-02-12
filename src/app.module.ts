@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { PdfCreationModule } from "./api/Scraping/PdfCreation.module";
+import { PdfCreationModule } from "./api/PdfCreation/PdfCreation.module";
 
 @Module({
     imports: [
