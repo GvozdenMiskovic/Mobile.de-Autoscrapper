@@ -1,5 +1,5 @@
 import { ScrapeResponse } from "./Scrape.boundary";
 
 export interface ScrapeRequester {
-    scrapeLink(link: String): Promise<ScrapeResponse>;
+    scrapeLink(link: String, price: number): Promise<ScrapeResponse>;
 }

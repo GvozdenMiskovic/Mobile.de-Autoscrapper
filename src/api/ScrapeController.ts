@@ -11,7 +11,7 @@ export class ScrapeController {
     }
 
     @Get()
-    public async getRawLinkData(@Param('link') link: string): Promise<ScrapeResponse> {
-        return undefined;
+    public async getRawLinkData(@Param('link') link: string, @Param('price') price: number): Promise<ScrapeResponse> {
+        return this.requesterFactory.create().scrapeLink(link, price);
     }
 }
