@@ -1,9 +1,9 @@
 import { Module } from "@nestjs/common";
-import { ScrapeModule } from "./api/Scrape.module";
+import { PdfCreationModule } from "./api/Scraping/PdfCreation.module";
 
 @Module({
     imports: [
-        ScrapeModule
+        PdfCreationModule
     ]
 })
 export class AppModule {}

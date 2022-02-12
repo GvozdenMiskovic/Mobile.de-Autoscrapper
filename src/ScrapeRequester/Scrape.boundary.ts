@@ -3,6 +3,5 @@ export type ScrapeResponse = {
     mainPictureUrl: string;
     table: Map<string, string[]>;
     description?: string;
-    price: number;
     otherImageUrls: string[];
 }

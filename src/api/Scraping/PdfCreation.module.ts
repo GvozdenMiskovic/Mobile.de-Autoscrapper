@@ -4,4 +4,4 @@ import { PdfCreationController } from "./PdfCreation.controller";
 @Module({
     controllers: [PdfCreationController],
 })
-export class ScrapeModule {}
+export class PdfCreationModule {}
