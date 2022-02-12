@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from "@nestjs/common";
-import { ScrapeResponse } from "../ScrapeRequester/Scrape.boundary";
-import { ScrapeRequesterFactory } from "../ScrapeRequester/ScrapeRequesterFactory";
+import { ScrapeResponse } from "../../ScrapeRequester/Scrape.boundary";
+import { ScrapeRequesterFactory } from "../../ScrapeRequester/ScrapeRequesterFactory";
 
 @Controller("/scrape")
 export class ScrapeController {
@@ -12,6 +12,6 @@ export class ScrapeController {
 
     @Get()
     public async getRawLinkData(@Param('link') link: string, @Param('price') price: number): Promise<ScrapeResponse> {
-        return this.requesterFactory.create().scrapeLink(link, price);
+        return this.requesterFactory.create().scrapeLink(link);
     }
 }
