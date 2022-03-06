@@ -1,6 +1,6 @@
-import { PdfBuilderFactory } from "../PdfGenerator/PdfBuilder/PdfBuilderFactory";
+import { PdfBuilderFactory } from "../../Domain/PdfBuilder/PdfBuilderFactory";
 import { PdfMakeBuilder } from "./PdfMakeBuilder";
-import { PdfBuilderInterface } from "../PdfGenerator/PdfBuilder/PdfBuilderInterface";
+import { PdfBuilderInterface } from "../../Domain/PdfBuilder/PdfBuilderInterface";
 
 export class PdfMakeBuilderFactory implements PdfBuilderFactory {
     create(): PdfBuilderInterface {

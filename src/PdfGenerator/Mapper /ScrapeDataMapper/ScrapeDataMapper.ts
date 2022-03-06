@@ -1,5 +1,5 @@
-import { ScrapeDataGateway } from "../ScrapedDataGateway/ScrapeDataGateway";
-import { ScrappedData } from "../ScrapedDataGateway/ScrappedData";
+import { ScrapeDataGateway } from "../../Gateways/ScrapedDataGateway/ScrapeDataGateway";
+import { ScrappedData } from "../../Gateways/ScrapedDataGateway/ScrappedData";
 import { WebElement, Builder, By } from "selenium-webdriver";
 
 export class ScrapeDataMapper implements ScrapeDataGateway {

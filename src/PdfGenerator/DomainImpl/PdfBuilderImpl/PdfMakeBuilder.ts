@@ -1,4 +1,4 @@
-import { PdfBuilderInterface } from "../PdfGenerator/PdfBuilder/PdfBuilderInterface";
+import { PdfBuilderInterface } from "../../Domain/PdfBuilder/PdfBuilderInterface";
 import PDFDocument from "pdfkit";
 import { createWriteStream } from "fs";
 import { randomUUID } from "crypto";
@@ -33,11 +33,11 @@ export class PdfMakeBuilder implements PdfBuilderInterface {
     }
 
     addTitlePage(title: string, pathToMainImage: string): PdfBuilderInterface {
-        // this.docDefinition.push({
-        //     text: title,
-        //     style: 'header',
-        //     pageBreak: "after"
-        // });
+        this.docDefinition.push({
+            text: title,
+            style: 'header',
+            pageBreak: "after"
+        });
         // this.docDefinition.push({
         //     image: pathToMainImage,
         //     pageBreak: "after"

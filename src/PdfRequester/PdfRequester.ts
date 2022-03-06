@@ -1,4 +1,4 @@
-import { PdfRequest } from "./PdfRequester.boundar";
+import { PdfRequest } from "./PdfRequester.boundary";
 
 export interface PdfRequester {
     generatePdfFromWithPrice(request: PdfRequest): Promise<string>;

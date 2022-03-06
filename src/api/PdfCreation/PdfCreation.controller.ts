@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Headers, Param, Post, Res, StreamableFile } from "@nestjs/common";
 import { PdfRequesterFactory } from "../../PdfRequester/PdfRequesterFactory";
 import { createReadStream } from "fs";
-import { PdfRequest } from "../../PdfRequester/PdfRequester.boundar";
+import { PdfRequest } from "../../PdfRequester/PdfRequester.boundary";
 
 @Controller("/scrape")
 export class PdfCreationController {
