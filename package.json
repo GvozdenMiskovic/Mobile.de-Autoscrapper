@@ -24,13 +24,16 @@
     "@nestjs/common": "^8.1.1",
     "@nestjs/core": "^8.1.1",
     "@nestjs/platform-express": "^8.1.1",
-    "@types/selenium-webdriver": "^4.0.18",
     "@types/pdfkit": "^0.12.3",
+    "@types/pdfmake": "^0.1.20",
+    "@types/selenium-webdriver": "^4.0.18",
     "pdfkit": "^0.13.0",
     "pdfkit-table": "^0.1.85",
+    "pdfmake": "^0.2.4",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.4.0"
+    "rxjs": "^7.4.0",
+    "selenium-webdriver": "^4.1.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.1.3",

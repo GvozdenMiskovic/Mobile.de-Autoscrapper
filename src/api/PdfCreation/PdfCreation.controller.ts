@@ -1,6 +1,7 @@
-import { Controller, Get, Param, Res, StreamableFile } from "@nestjs/common";
+import { Body, Controller, Get, Headers, Param, Post, Res, StreamableFile } from "@nestjs/common";
 import { PdfRequesterFactory } from "../../PdfRequester/PdfRequesterFactory";
 import { createReadStream } from "fs";
+import { PdfRequest } from "../../PdfRequester/PdfRequester.boundar";
 
 @Controller("/scrape")
 export class PdfCreationController {
@@ -10,12 +11,14 @@ export class PdfCreationController {
         this.requesterFactory = requesterFactory;
     }
 
-    @Get()
-    public async generatePdf(@Res() res: Response,
-                             @Param('link') link: string,
-                             @Param('price') price: number): Promise<StreamableFile> {
-        const pathToFile = await this.requesterFactory.create().generatePdfFromWithPrice(link, price);
-        res.headers.set('Content-Type', 'image/pdf');
+    @Post()
+    public async generatePdf(@Headers() headers,
+                             @Body() request: PdfRequest): Promise<StreamableFile> {
+        const pathToFile = await this.requesterFactory
+            .create()
+            .generatePdfFromWithPrice(request);
+        console.log(pathToFile);
+        headers['Content-Type'] = 'image/pdf';
         const file = createReadStream(pathToFile);
         return new StreamableFile(file);
     }
