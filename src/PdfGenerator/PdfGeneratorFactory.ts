@@ -6,13 +6,21 @@ import { ScrapeDataGatewayFactory } from "./Gateways/ScrapedDataGateway/ScrapeDa
 import { ScrapeDataMapperFactory } from "./Mapper/ScrapeDataMapper/ScrapeDataMapperFactory";
 import { PdfMakeBuilderFactory } from "./DomainImpl/PdfBuilderImpl/PdfMakeBuilderFactory";
 import { ImageDataMapper } from "./Mapper/ImageDataMapper/ImageDataMapper";
+import { Injectable } from "@nestjs/common";
+import { TransaltionDataMapperFactory } from "./Mapper/TranslationDataMapper/TranslationDataMapperFactory";
+import { TranslationServiceClient } from "@google-cloud/translate";
 
+
+@Injectable()
 export class PdfGeneratorFactory implements PdfRequesterFactory {
-    create(): PdfRequester {
-        return new PdfGenerator(
+  private readonly projectId: string = "importy-garage-f-1647527251263";
+
+  create(): PdfRequester {
+            return new PdfGenerator(
             new ScrapeDataMapperFactory().create(),
             new PdfMakeBuilderFactory(),
-            new ImageDataMapper()
+            new ImageDataMapper(),
+            new TransaltionDataMapperFactory(this.projectId, new TranslationServiceClient())
         );
     }
 }
