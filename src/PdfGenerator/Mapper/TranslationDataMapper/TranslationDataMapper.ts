@@ -1,4 +1,5 @@
 import { TranslationServiceClient } from "@google-cloud/translate";
+import { Translate } from "@google-cloud/translate/build/src/v2";
 import { TranslationDataGateway } from "src/PdfGenerator/Gateways/TranslationDataGateway/TranslationDataGateway";
 
 export class TranslationDataMapper implements TranslationDataGateway {
@@ -8,19 +9,9 @@ export class TranslationDataMapper implements TranslationDataGateway {
     private projectId: string
   ) {}
 
-  public async translate(path: string): Promise<string> {
-    const config = {
-      gcsSource: {
-        inputUri: path
-      }
-    };
-    const request = {
-      parent: this.translationClient.locationPath(this.projectId, 'global'),
-      documentInputConfig: config,
-      targetLanguageCode: 'es-ES'
-    }
-    const [response] = await this.translationClient.translateDocument(request);
-    console.log(response);
-    return Promise.resolve(undefined);
+  public async translate(description: string): Promise<string> {
+    const translate = new Translate();
+    let [translation] = await translate.translate(description, "es")
+    return Promise.resolve(translation);
   }
 }

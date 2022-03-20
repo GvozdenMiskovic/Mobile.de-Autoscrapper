@@ -26,8 +26,11 @@ export class ScrapeDataMapper implements ScrapeDataGateway {
 
       for (let i = 1; i < attributes.length; i++) {
         const key = await attributes[i][0].getText();
-        const value = await attributes[i][1].getText();
+        let value = await attributes[i][1].getText();
         if (keys.includes(key)){
+          if (key === "Potencia"){
+            value = value.split("(")[1].split(")")[0];
+          }
           table.set(key, value);
         }
       }

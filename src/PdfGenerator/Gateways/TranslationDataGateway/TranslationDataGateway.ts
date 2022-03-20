@@ -4,5 +4,5 @@ export interface TranslationDataGateway {
    * to the new, translated version
    * @param path
    */
-  translate(path: string): Promise<string>;
+  translate(description: string): Promise<string>;
 }

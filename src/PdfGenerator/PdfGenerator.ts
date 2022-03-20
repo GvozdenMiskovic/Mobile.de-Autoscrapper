@@ -40,12 +40,11 @@ export class PdfGenerator implements PdfRequester {
             )
             .addDescriptionPages(
                 scrappedData.table,
-                scrappedData.description,
+                await this.translationDataGateway.translate(scrappedData.description),
                 request.price
             )
             .addImageGridPages(pathsToOtherImages)
             .build();
-        // return this.translationDataGateway.translate(path);
         return path;
     }
 }
