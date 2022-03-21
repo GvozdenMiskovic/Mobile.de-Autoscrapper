@@ -19,4 +19,7 @@ WORKDIR /app
 COPY --from=install /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 COPY src/client ./client
+COPY google-auth.json ./google-auth.json
+COPY fonts fonts
+COPY logo.jpeg logo.jpeg
 CMD node ./dist/main
