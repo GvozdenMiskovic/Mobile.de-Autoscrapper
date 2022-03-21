@@ -17,18 +17,9 @@ services:
     ports:
       - "8080:8080"
     image: node:14.19.0
-    command: npm run start
-    volumes:
-      - "./src:/src"
-      - "./node_modules:/node_modules"
-      - "./fonts:/fonts"
-      - "./package.json:/package.json"
-      - "./package-lock.json:/package-lock.json"
-      - "./tsconfig.build.json:/tsconfig.build.json"
-      - "./tsconfig.json:/tsconfig.json"
-      - "./Importy Garage Ficha-ad866b46f280.json:/google-auth.json"
-      - "./importy-garage-f-1647527251263-4bb582930b17.json:/importy-garage-f-1647527251263-4bb582930b17.json"
-      - "./logo.jpeg:/logo.jpeg"
+    build:
+        dockerfile: ./DockerFile
+        context: ./
     environment:
       - GOOGLE_APPLICATION_CREDENTIALS=google-auth.json
     depends_on:

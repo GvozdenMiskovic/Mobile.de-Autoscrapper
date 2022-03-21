@@ -1,0 +1,21 @@
+FROM node:14-alpine AS install
+WORKDIR /app
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install
+
+FROM node:14-alpine AS build
+WORKDIR /app
+COPY package.json ./
+COPY package-lock.json ./
+COPY tsconfig.build.json ./
+COPY tsconfig.json ./
+COPY --from=install /app/node_modules ./node_modules
+COPY src ./src
+RUN npm run build
+
+FROM node:14-alpine AS run
+WORKDIR /app
+COPY --from=install /app/node_modules ./node_modules
+COPY --from=build /app/dist ./dist
+CMD node ./dist/main
