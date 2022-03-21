@@ -5,11 +5,11 @@ import { WebElement, Builder, By, until } from "selenium-webdriver";
 export class ScrapeDataMapper implements ScrapeDataGateway {
 
   public async scrapeLink(link: string): Promise<ScrappedData> {
-    const driver = await new Builder().forBrowser('chrome').build();
-    // const driver = await new Builder()
-    //     .usingServer('http://172.17.0.3:4444/wd/hub')
-    //     .forBrowser('chrome')
-    //     .build();
+    // const driver = await new Builder().forBrowser('chrome').build();
+    const driver = await new Builder()
+        .usingServer('http://selenium:4444/wd/hub')
+        .forBrowser('chrome')
+        .build();
     const keys = ["Primer registro", "Kilometraje", "Potencia", "Combustible"];
 
     try {
