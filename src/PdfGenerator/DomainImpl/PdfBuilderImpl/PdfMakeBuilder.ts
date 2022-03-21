@@ -49,8 +49,8 @@ export class PdfMakeBuilder implements PdfBuilderInterface {
         for (let i = 0; i < length; i += 2) {
           this.docDefinition.push({
             columns: [
-              { image: slicedPaths[i], fit: [240, 240] } ,
-              [{ image: slicedPaths[i + 1], fit: [240, 240] }, (i * 2 + 1) % 3 && i !== length - 1 ? { text: "\n\n" } : { text: "", pageBreak: "after"} ]
+              { image: slicedPaths[i], fit: [210, 210] } ,
+              [{ image: slicedPaths[i + 1], fit: [210, 210] }, (i * 2 + 1) % 3 && i !== length - 1 ? { text: "\n\n" } : { text: "", pageBreak: "after"} ]
             ],
             columnGap: 5,
             alignment: "center"
