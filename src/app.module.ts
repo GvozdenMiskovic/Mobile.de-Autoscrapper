@@ -7,7 +7,7 @@ import { join } from "path";
     imports: [
         PdfCreationModule,
         ServeStaticModule.forRoot({
-          rootPath: join(__dirname, '../src', 'client'),
+          rootPath: './client',
           exclude: ['/api*'],
         }),
     ]
